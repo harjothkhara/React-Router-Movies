@@ -2,10 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const MovieCard = props => {
-  const { title, director, metascore, stars } = props.movie;
+  const { title, director, id, metascore, stars } = props.movie;
   return (
-    <Link to={`/movies/${props.movie.id}`}>
-      <div className="save-wrapper">
+    
+    <div className="save-wrapper">
+      <Link to={`/movies/${id}`}>
         <div className="movie-card">
           <h2>{title}</h2>
           <div className="movie-director">
@@ -22,9 +23,11 @@ const MovieCard = props => {
             </div>
           ))}
         </div>
-        <div className="save-button">Save</div>
+      </Link> 
+        <div className="save-button" onClick={() => 
+          props.addToSavedList(props.movie)}>Save</div>
      </div>
-   </Link>
+   
   ) 
 };
 
